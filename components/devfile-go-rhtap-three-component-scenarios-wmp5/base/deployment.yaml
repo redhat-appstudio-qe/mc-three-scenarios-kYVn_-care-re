@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: devfile-go-rhtap-three-component-scenarios-wmp5
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: devfile-go-rhtap-three-component-scenarios-wmp5
+    app.kubernetes.io/part-of: mc-three-scenarios
+  name: devfile-go-rhtap-three-component-scenarios-wmp5
+spec:
+  replicas: 1
+  revisionHistoryLimit: 0
+  selector:
+    matchLabels:
+      app: go-app
+      app.kubernetes.io/instance: devfile-go-rhtap-three-component-scenarios-wmp5
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: go-app
+        app.kubernetes.io/instance: devfile-go-rhtap-three-component-scenarios-wmp5
+    spec:
+      containers:
+      - image: quay.io/redhat-appstudio-qe/rhtap-demo-qyqu-tenant/mc-three-scenarios/devfile-go-rhtap-three-component-scenarios-wmp5@sha256:9510844425e741d13b134b9b826b131ed6d7ac5cc9fa9c9a4d9103fe19865bf4
+        name: my-go
+        ports:
+        - containerPort: 8081
+          name: http
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 10m
+            memory: 10Mi
+status: {}
