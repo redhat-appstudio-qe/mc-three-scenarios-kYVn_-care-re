@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: node-nodevfile-nodocker-rhtap-three-component-scenarios-ayid
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: node-nodevfile-nodocker-rhtap-three-component-scenarios-ayid
+    app.kubernetes.io/part-of: mc-three-scenarios
+  name: node-nodevfile-nodocker-rhtap-three-component-scenarios-ayid
+spec:
+  replicas: 1
+  revisionHistoryLimit: 0
+  selector:
+    matchLabels:
+      app: nodejs-app
+      app.kubernetes.io/instance: node-nodevfile-nodocker-rhtap-three-component-scenarios-ayid
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: nodejs-app
+        app.kubernetes.io/instance: node-nodevfile-nodocker-rhtap-three-component-scenarios-ayid
+    spec:
+      containers:
+      - image: quay.io/redhat-appstudio-qe/rhtap-demo-qyqu-tenant/mc-three-scenarios/node-nodevfile-nodocker-rhtap-three-component-scenarios-ayid@sha256:b536c7710889b54dd32d137b165d047f07e8eaf0d18fcff1717a11bc3c82a301
+        name: my-nodejs
+        ports:
+        - containerPort: 3001
+          name: http
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 10m
+            memory: 50Mi
+status: {}
